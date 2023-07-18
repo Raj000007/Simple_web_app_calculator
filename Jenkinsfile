@@ -1,6 +1,8 @@
 pipeline {
     agent any
-    
+    tools {
+        maven "MAVEN_HOME"
+    }
     environment {
         SNAP_REPO = 'snapshot'
   NEXUS_USER = 'admin'
