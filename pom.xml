@@ -20,9 +20,9 @@
 
 <distributionManagement>
 <snapshot>
-<id>snapshot</id>
+<id>snapshotRepository</id>
 <url>http://54.196.137.6:8081/repository/snapshot/</url>
-</snapshot>
+</snapshotRepository>
 <releases>
 <id>Release</id>
 <url>http://54.196.137.6:8081/repository/Release/</url>
