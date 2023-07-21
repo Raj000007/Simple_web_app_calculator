@@ -9,7 +9,7 @@ pipeline {
         SNAP_REPO = 'snapshot'
   NEXUS_USER = 'admin'
   NEXUS_PASS = 'admin'
-  RELEASE_REPO = 'release'
+  RELEASE_REPO = 'Release'
   CENTRAL_REPO = 'central'
   NEXUSIP = '54.196.137.6'
   NEXUSPORT = '8081'
