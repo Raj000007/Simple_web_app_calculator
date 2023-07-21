@@ -6,10 +6,10 @@ pipeline {
     }
     
     environment {
-        SNAP_REPO = 'snapshot'
+        SNAP_REPO = 'vprofile-snapshot'
   NEXUS_USER = 'admin'
   NEXUS_PASS = 'admin'
-  RELEASE_REPO = 'Release'
+  RELEASE_REPO = 'release'
   CENTRAL_REPO = 'central'
   NEXUSIP = '54.196.137.6'
   NEXUSPORT = '8081'
@@ -20,7 +20,26 @@ pipeline {
     stages {
         stage('Build'){
             steps {
-                sh 'mvn -s settings.xml install -DskipTests'
+                sh 'mvn -s settings.xml -DskipTests install'
+            }
+            post {
+                success {
+                    echo "Now Archiving."
+                    archiveArtifacts artifacts: '**/*.war'
+                }
+            }
+        }
+
+        stage('Test'){
+            steps {
+                sh 'mvn -s settings.xml test'
+            }
+
+        }
+
+        stage('Checkstyle Analysis'){
+            steps {
+                sh 'mvn -s settings.xml checkstyle:checkstyle'
             }
         }
     }
