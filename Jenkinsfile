@@ -11,7 +11,7 @@ pipeline {
   NEXUS_PASS = 'admin'
   RELEASE_REPO = 'release'
   CENTRAL_REPO = 'central'
-  NEXUSIP = '172.31.91.112'
+  NEXUSIP = '172.31.16.243'
   NEXUSPORT = '8081'
   NEXUS_GRP_REPO = 'group'
         NEXUS_LOGIN = 'nexuslogin'
@@ -20,7 +20,7 @@ pipeline {
     stages {
         stage('Build'){
             steps {
-                sh 'mvn -X -s settings.xml install -DskipTests'
+                sh 'mvn -s settings.xml install -DskipTests'
             }
         }
     }
