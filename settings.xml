@@ -1,38 +1,95 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <settings xmlns="http://maven.apache.org/SETTINGS/1.1.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd">
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd">
 
+    <!-- General settings -->
+    <localRepository>${user.home}/.m2/repository</localRepository>
+    <interactiveMode>true</interactiveMode>
+    <offline>false</offline>
+
+    <!-- Proxy configuration, if applicable -->
+    <!--
+    <proxies>
+        <proxy>
+            <id>proxy1</id>
+            <active>true</active>
+            <protocol>http</protocol>
+            <host>proxy.example.com</host>
+            <port>8080</port>
+            <username>proxy_username</username>
+            <password>proxy_password</password>
+            <nonProxyHosts>localhost|*.example.com</nonProxyHosts>
+        </proxy>
+    </proxies>
+    -->
+
+    <!-- Servers -->
   <servers>
-    <server>
-      <id>${SNAP-REPO}</id>
-      <username>${NEXUS-USER}</username>
-      <password>${NEXUS-PASS}</password>
-    </server>
-    <server>
-      <id>${RELEASE-REPO}</id>
-      <username>${NEXUS-USER}</username>
-      <password>${NEXUS-PASS}</password>
-    </server>
+       <!--   <server>
+            <id>mail-server</id>
+            <username>mail_username</username>
+            <password>mail_password</password>
+        </server> -->
         <server>
-        <id>${CENTRAL-REPO}</id>
-      <username>${NEXUS-USER}</username>
-      <password>${NEXUS-PASS}</password>
-    </server>
-    <server>
-        <id>${NEXUS-GRP-REPO}</id>
-      <username>${NEXUS-USER}</username>
-      <password>${NEXUS-PASS}</password>
-    </server>
-  </servers>
+            <id>${SNAP-REPO}</id>
+            <username>${NEXUS-USER}</username>
+            <password>${NEXUS-PASS}</password>
+        </server>
+        <server>
+            <id>${RELEASE-REPO}</id>
+            <username>${NEXUS-USER}</username>
+            <password>${NEXUS-PASS}</password>
+        </server>
+        <server>
+            <id>{CENTRAL-REPO}</id>
+            <username>${NEXUS-USER}</username>
+            <password>${NEXUS-PASS}</password>
+        </server>
+        <server>
+            <id>{NEXUS-GRP-REPO}</id>
+            <username>${NEXUS-USER}</username>
+            <password>${NEXUS-PASS}</password>
+        </server>
+    </servers>
 
-  <mirrors>
-    <mirror>
-      <id>${CENTRAL-REPO}</id>
-      <name>${CENTRAL-REPO}</name>
-      <url>http://${NEXUSIP}:${NEXUSPORT}/repository/${NEXUS-GRP-REPO}/</url>
-      <mirrorOf>*</mirrorOf>
-    </mirror>
-  </mirrors>
+    <!-- Mirrors -->
+    <mirrors>
+        <mirror>
+            <id>${CENTRAL-REPO}</id>
+            <name>${CENTRAL-REPO}</name>
+            <url>http://${NEXUSIP}:${NEXUSPORT}/repository/${NEXUS-GRP-REPO}/</url>
+            <mirrorOf>*</mirrorOf>
+        </mirror>
+    </mirrors>
+
+    <!-- Profiles -->
+    <profiles>
+        <profile>
+            <id>development</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <!-- Custom configurations for development environment -->
+        </profile>
+        <profile>
+            <id>production</id>
+            <!-- Custom configurations for production environment -->
+        </profile>
+    </profiles>
+
+    <!-- Active Profiles -->
+    <activeProfiles>
+        <activeProfile>development</activeProfile>
+    </activeProfiles>
+
+    <!-- Plugin Repositories -->
+    <!--
+    <pluginRepositories>
+        <pluginRepository>
+            <id>plugin-repo1</id>
+            <url>https://maven.apache.org/plugins</url>
+        </pluginRepository>
+    </pluginRepositories>
+    -->
 
 </settings>
