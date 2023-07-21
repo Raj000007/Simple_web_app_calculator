@@ -18,16 +18,7 @@
     <maven.compiler.target>1.7</maven.compiler.target>
   </properties>
 
-<distributionManagement>
-<snapshot>
-<id>snapshotRepository</id>
-<url>http://54.196.137.6:8081/repository/snapshot/</url>
-</snapshotRepository>
-<releases>
-<id>Release</id>
-<url>http://54.196.137.6:8081/repository/Release/</url>
-</releases>
-</distributionManagement>
+
 
   <dependencies>
     <dependency>
